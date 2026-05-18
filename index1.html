@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>David Lindequist</title>
+<meta content="David Lindequist. Assistant Professor of Economics at Miami University." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf9f7;
+      --paper: #fffdf9;
+      --text: #1c1b19;
+      --muted: #72706b;
+      --border: #e0ddd8;
+      --link: #163b73;
+      --accent: #8c1d18;
+      --accent-soft: #f1e3df;
+      --serif: 'Source Serif 4', Georgia, serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    html { font-size: 17px; scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(circle at 12% 4%, rgba(140, 29, 24, 0.12), transparent 26rem),
+        radial-gradient(circle at 88% 8%, rgba(22, 59, 115, 0.10), transparent 24rem),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 7rem;
+    }
+
+    /* Header */
+    .hd {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 1.85rem;
+      padding: 3rem 2.4rem 2.7rem;
+      margin-bottom: 4.4rem;
+      border: 1px solid var(--border);
+      border-top: 5px solid var(--accent);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 227, 223, 0.48));
+      box-shadow: 0 24px 70px rgba(28, 27, 25, 0.08);
+    }
+
+    .hd-left h1 {
+      font-size: clamp(2.5rem, 7vw, 4.2rem);
+      font-weight: 300;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+      margin-bottom: 0.75rem;
+    }
+
+    .hd-left .role {
+      font-size: 1.08rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 0.65rem;
+      line-height: 1.5;
+    }
+
+    .hd-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+
+    .hd-links a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.12s, border-color 0.12s;
+    }
+    .hd-links a:hover { color: var(--text); border-bottom-color: var(--border); }
+
+    .cv-button {
+      display: inline-block;
+      margin-top: 1.35rem;
+      padding: 0.62rem 1rem;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff !important;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 12px 28px rgba(140, 29, 24, 0.18);
+      transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+    }
+
+    .cv-button:hover {
+      background: #741713;
+      color: #fff !important;
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 34px rgba(140, 29, 24, 0.24);
+    }
+
+    .hd-photo {
+      width: min(275px, 78vw);
+      height: auto;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top center;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      box-shadow: 0 22px 52px rgba(28, 27, 25, 0.18);
+    }
+
+    /* Sections */
+    section { margin-bottom: 4.2rem; }
+
+    section h2 {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 4.5rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    p { font-size: 0.97rem; margin-bottom: 0.8rem; }
+    p:last-child { margin-bottom: 0; }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    /* Papers */
+    .papers { list-style: none; }
+
+    .paper {
+      padding: 1.65rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 253, 249, 0.62);
+      transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+    }
+    .paper:first-child { padding-top: 1.65rem; }
+    .paper:last-child { border-bottom: none; padding-bottom: 1.65rem; }
+
+    .paper:hover {
+      transform: translateX(4px);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 35px rgba(28, 27, 25, 0.06);
+    }
+
+    .paper-title {
+      font-size: 1.04rem;
+      font-weight: 400;
+      display: block;
+      margin-bottom: 0.22rem;
+      color: var(--link);
+      line-height: 1.45;
+    }
+    .paper-title:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    .paper-meta {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .paper-abstract {
+      font-size: 0.88rem;
+      color: #4a4845;
+      line-height: 1.7;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    .paper-abstract.open { display: block; }
+
+    .paper-summary {
+      font-size: 0.9rem;
+      color: #3f3d3a;
+      line-height: 1.68;
+      margin: 0.55rem 0 0.85rem;
+    }
+
+    .paper-abstract p {
+      margin-bottom: 0;
+    }
+
+    .abs-btn {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      text-transform: uppercase;
+      transition: color 0.12s;
+    }
+    .abs-btn:hover { color: var(--text); }
+
+    /* Working papers list */
+    .wp-list { list-style: none; margin-top: 1.4rem; }
+    .wp-item {
+      padding: 0.78rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.98rem;
+    }
+    .wp-item:first-child { padding-top: 0; }
+    .wp-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .wp-meta { font-size: 0.84rem; color: var(--muted); }
+
+    /* Footer */
+    footer {
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    @media (max-width: 500px) {
+      .hd { gap: 1.45rem; padding: 1.5rem; }
+      .hd-photo { width: min(220px, 78vw); height: auto; }
+      .wrap { padding: 3rem 1.25rem 5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+<header class="hd">
+<div class="hd-left">
+<h1>David Lindequist</h1>
+<p class="role">
+        Assistant Professor of Economics<br/>
+<a href="https://miamioh.edu/fsb/academics/economics/" rel="noopener noreferrer" target="_blank">Miami University</a>
+</p>
+<p style="font-size:0.88rem;color:var(--muted);">
+<a href="mailto:lindeqd@miamioh.edu" rel="noopener noreferrer" style="color:var(--muted);" target="_blank">lindeqd@miamioh.edu</a>
+</p>
+<nav class="hd-links">
+<a href="#research" rel="noopener noreferrer" target="_blank">Research</a>
+<a href="#teaching" rel="noopener noreferrer" target="_blank">Teaching</a>
+
+<a href="https://scholar.google.com/citations?user=XKbqyEgAAAAJ&amp;hl=en&amp;oi=ao" rel="noopener noreferrer" target="_blank">Scholar ↗</a>
+<a href="https://www.linkedin.com/in/david-lindequist/" rel="noopener noreferrer" target="_blank">LinkedIn ↗</a>
+</nav><a class="cv-button" href="https://www.david-lindequist.com/_files/ugd/9a3d54_a0a16de09e79445881457f62c2558da6.pdf" rel="noopener noreferrer" target="_blank">Download CV</a>
+</div>
+<img alt="David Lindequist" class="hd-photo" src="https://static.wixstatic.com/media/9a3d54_a7d5b9f739df485f8af58146651aa92c~mv2.jpg/v1/crop/x_0,y_0,w_1266,h_1817/fill/w_336,h_489,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/PXL_20250728_111844798~2.jpg"/>
+</header>
+<section id="about">
+<h2>About</h2>
+<p>
+      I am an Assistant Professor in the <a href="https://miamioh.edu/fsb/academics/economics/" rel="noopener noreferrer" target="_blank">Department of Economics</a>
+      at <a href="https://miamioh.edu/" rel="noopener noreferrer" target="_blank">Miami University</a>. My research focuses on topics in macro,
+      environmental, international, and public economics.
+    </p>
+<p>
+      I earned my PhD in economics at <a href="https://economics.wustl.edu/" rel="noopener noreferrer" target="_blank">Washington University in St. Louis</a>
+      in May 2020, after completing undergraduate studies at the
+      <a href="https://www.vwl.uni-mannheim.de/en/" rel="noopener noreferrer" target="_blank">University of Mannheim</a>.
+    </p>
+</section>
+<section id="research">
+<h2>Published Papers</h2>
+<ul class="papers">
+<li class="paper">
+<a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4952989" rel="noopener noreferrer" target="_blank">
+          Greener Thy Neighbor? On the Welfare Effects of Protectionist Climate Policy
+        </a>
+<p class="paper-meta">with <a href="https://www.deojain.com/home" rel="noopener noreferrer" target="_blank">Saumya Deojain</a> · <em>Journal of Environmental Economics and Management</em>, forthcoming 2026</p><p class="paper-summary">This paper studies when green protectionist policies can help countries coordinate on climate action. The central result is that protectionist climate measures can be welfare-improving when they shift equilibrium selection toward abatement, but only if the associated distortions remain limited.</p>
+<button class="abs-btn" onclick="toggle(this)">Abstract ↓</button>
+<div class="paper-abstract"><p>The world is witnessing a surge in green industrial policies, with prominent examples such as the U.S. Inflation Reduction Act incorporating significant protectionist elements. We argue that such green protectionism can play a strategic role in fostering international coordination on climate action. In a simple model combining a standard abatement game with a beggar-thy-neighbor game, we show that protectionist policies improve welfare when expected distortions are low, as they facilitate coordination on climate mitigation at minimal costs. When expected distortions are high, protectionist measures are not adopted and are effectively welfare-neutral. However, when expected distortions are of intermediate size, unregulated protectionist climate policies lead countries to rely excessively on distortive instruments, reducing global welfare. Our findings suggest that regulators like the WTO can enhance welfare by restricting but not entirely banning green protectionist measures. When countries are asymmetric, the case for differentiated regulation depends on whether asymmetries primarily affect countries’ incentives to coordinate on abatement or the social cost of using protectionist instruments to sustain that coordination. We further find that efforts to reduce uncertainty about the size of distortions might backfire, inadvertently encouraging coordination on costly protectionist measures.</p></div>
+</li>
+<li class="paper">
+<a class="paper-title" href="https://www.sciencedirect.com/science/article/pii/S0165176526001771" rel="noopener noreferrer" target="_blank">
+          Tipping into Protectionism: Tariff Shocks and the Fragility of Free Trade
+        </a>
+<p class="paper-meta"><em>Economics Letters</em>, 2026</p><p class="paper-summary">This paper explains how temporary tariff shocks can have persistent effects on trade policy. By weakening competitiveness and strengthening protectionist political incentives, a short-lived tariff episode can move the economy into a durable low-competitiveness equilibrium.</p>
+<button class="abs-btn" onclick="toggle(this)">Abstract ↓</button>
+<div class="paper-abstract"><p>This paper develops a dynamic political-economy model of trade-policy hysteresis. Tariffs reduce innovation and competitiveness but generate short-run benefits for import-competing sectors, creating incentives for myopic policymakers to adopt protectionism. The interaction between myopic protectionist policy and slow-moving competitiveness generates two stable steady states: a low-tariff, high-competitiveness regime and a high-tariff, low-competitiveness regime. Although free trade is welfare superior, it is politically fragile. Temporary tariff shocks that sufficiently erode competitiveness can permanently shift political incentives toward protectionism, trapping the economy in a low-competitiveness equilibrium with persistently high tariffs and lower welfare.</p></div>
+</li>
+<li class="paper">
+<a class="paper-title" href="https://www.sciencedirect.com/science/article/pii/S0378426626000750" rel="noopener noreferrer" target="_blank">
+          The Common Currency Channel of Risk Sharing
+        </a>
+<p class="paper-meta"><em>Journal of Banking &amp; Finance</em>, 2026</p><p class="paper-summary">This paper develops a monetary channel through which common currencies can provide international risk sharing. The mechanism is especially relevant when private financial markets are impaired, as during the Eurocrisis.</p>
+<button class="abs-btn" onclick="toggle(this)">Abstract ↓</button>
+<div class="paper-abstract"><p>Conventional wisdom holds that a common currency deprives countries of an important tool for responding to domestic shocks. This paper explores the extent to which a common currency can also facilitate cross-country risk sharing. I develop a monetary model in which asymmetric productivity shocks are partly smoothed through terms-of-trade adjustment and current account imbalances. When these adjustments are incomplete, the central bank can further promote risk sharing by refinancing current account imbalances through an uneven allocation of liquidity across countries. For moderate shocks, this redistribution does not interfere with the inflation target, while large asymmetric shocks create a trade-off between risk sharing and inflation. Applying the model to the 2008–2012 Eurocrisis, I document substantial central-bank-mediated financing of current account imbalances. I find that the common currency channel absorbed roughly one quarter of country-specific output shocks at a time when private markets and fiscal risk-sharing mechanisms were impaired.</p></div>
+</li>
+<li class="paper">
+<a class="paper-title" href="https://www.sciencedirect.com/science/article/abs/pii/S0165176525006214" rel="noopener noreferrer" target="_blank">
+          Has the World Become More Interconnected? Distance and GDP Comovements Over Time
+        </a>
+<p class="paper-meta">with <a href="https://sites.google.com/site/joshederington/" rel="noopener noreferrer" target="_blank">Josh Ederington</a>, <a href="https://www.pugetsound.edu/directory/yoonseon-han" rel="noopener noreferrer" target="_blank">Yoonseon Han</a>, and <a href="https://www.jennyminier.com/" rel="noopener noreferrer" target="_blank">Jenny Minier</a> · <em>Economics Letters</em>, 2026</p><p class="paper-summary">This paper asks whether geography still predicts business-cycle comovement. The evidence suggests that distance mattered for GDP synchronization before 2000, but that this relationship has largely disappeared in the more recent period.</p>
+<button class="abs-btn" onclick="toggle(this)">Abstract ↓</button>
+<div class="paper-abstract"><p>It is commonly assumed that the drastic decline in trade costs over the past century has made the world more interconnected and reduced the importance of physical distance. However, empirical gravity regressions show that distance continues to play an important role in explaining trade flows. We investigate whether physical distance has also continued to affect GDP comovements between countries: that is, is it still the case that neighboring countries are more likely to have synchronized business cycles than countries further apart? We show that, while geographic distance was a significant predictor of GDP comovements between 1955-2000, this effect disappears after 2000. Thus, we find evidence for the "death of distance" when it comes to GDP comovements.</p></div>
+</li>
+<li class="paper">
+<a class="paper-title" href="https://doi.org/10.1016/j.eneco.2025.108388" rel="noopener noreferrer" target="_blank">
+          Did Shale Gas Green the U.S. Economy?
+        </a>
+<p class="paper-meta">with <a href="https://www.linkedin.com/in/samuel-selent-2019/" rel="noopener noreferrer" target="_blank">Samuel Selent</a> · <em>Energy Economics</em>, 2025</p><p class="paper-summary">This paper evaluates whether the U.S. shale gas boom reduced emissions and changed the energy mix. The results point to sizable emissions reductions through coal-to-gas substitution, renewable expansion, and lower energy intensity.</p>
+<button class="abs-btn" onclick="toggle(this)">Abstract ↓</button>
+<div class="paper-abstract"><p>Since the mid-2000s, hydraulic fracturing (’fracking’) has significantly altered the U.S. energy landscape through a surge in shale gas production. Employing synthetic control methods, we evaluate the effect of the shale gas boom on U.S. emissions and various energy metrics. We find that the boom reduced average annual U.S. greenhouse gas emissions per capita by roughly 7.5%. Drawing on the existing literature on the environmental impact of shale gas, we decompose this overall treatment effect into changes in the fossil fuel mix (the substitution effect), changes in the speed of the transition to non-fossil energy sources (the transition effect), and changes in overall energy consumption (the consumption effect). Our results indicate that the estimated treatment effect is attributable to an energy mix in which natural gas replaces coal, an accelerated transition to renewable energies, and a decrease in energy consumption, largely driven by decreases in energy intensity. Our findings highlight the role of shale gas as a ’bridge fuel’ for the U.S. economy between 2007 and 2019, an energy source facilitating the transition from carbon-intensive fossil fuels to cleaner energy sources.</p></div>
+</li>
+<li class="paper">
+<a class="paper-title" href="https://www.sciencedirect.com/science/article/pii/S014098832400639X" rel="noopener noreferrer" target="_blank">
+          Global Spillovers of US Climate Policy Risk: Evidence from EU Carbon Emissions Futures
+        </a>
+<p class="paper-meta">with <a href="https://www.linkedin.com/in/micah-fields" rel="noopener noreferrer" target="_blank">Micah Fields</a> · <em>Energy Economics</em>, 2024</p><p class="paper-summary">This paper studies how U.S. climate policy events spill over into European carbon markets. The evidence suggests that EU carbon futures respond strongly to U.S. policy signals because markets anticipate changes in European regulatory stringency.</p>
+<button class="abs-btn" onclick="toggle(this)">Abstract ↓</button>
+<div class="paper-abstract"><p>International climate policy risk spillovers occur when expected changes to climate policy stringency in one country affect expected climate policy stringency in another country. We develop an event study procedure to identify such spillovers in emissions trading systems, specifically examining the impact from the United States (US) to the European Union (EU). Distinguishing between policy events likely to reduce US commitment to climate action (‘brown events’) and those likely to increase it (‘green events’), we find that the average brown US policy event is associated with an anticipated increase in future EU carbon permit supply, leading to a cumulative 7.1% drop in EU carbon prices over the event window. Conversely, green US policy events are linked to an expected decrease in future EU permit supply, resulting in a cumulative 4.7% rise in EU carbon prices. These findings suggest that financial markets anticipate EU regulators to align with the direction of US climate policy. Our results underscore the significance of regulatory risk spillovers in global climate policy coordination.</p></div>
+</li>
+</ul>
+</section>
+<section>
+<h2>Working Papers</h2>
+<ul class="papers">
+<li class="paper">
+<a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3401377" rel="noopener noreferrer" target="_blank">
+          Diversity Taxes: Linking Identity Expression, Social Contact, and Taxation
+        </a>
+<p class="paper-meta">with <a href="https://www.deojain.com/home" rel="noopener noreferrer" target="_blank">Saumya Deojain</a> · <em>Revisions requested, European Economic Review</em></p><p class="paper-summary">This paper develops a public-economics model in which identity expression, social contact, and taxation interact. It shows how governments may use tax policy to shape visible identity expression and how openness to diversity can change the demand for taxation.</p>
+<button class="abs-btn" onclick="toggle(this)">Abstract ↓</button>
+<div class="paper-abstract"><p>The sociological literature suggests that within diverse communities, individuals create externalities on members of other social groups when they express identity through the consumption of market goods. Positive identity expression externalities lead individuals to increase their exposure to out-group identity expression, while negative externalities lead them to reduce it. At the same time, to the extent that identity expression is tied to market consumption, fiscal policy can influence how much identity is expressed by affecting individuals’ disposable income. We develop a theoretical framework in which identity expression externalities are addressed through these two channels: individuals privately adjust their social contacts to manage exposure, while local governments can use taxation to influence the visibility of identity in shared spaces. We study how these mechanisms interact, and how policy depends on which social group the government prioritizes and whether individuals react favorably or unfavorably to out-group expression. We find that governments amplify the behavioral response to diversity by adjusting the intensity of identity signaling through tax policy. We also show that greater openness to diversity can reduce demand for taxation, leading to more visible identity expression but also more private avoidance. The framework can accommodate a range of political-economy, fiscal, and institutional extensions.</p></div>
+</li>
+<li class="paper">
+<a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5384281" rel="noopener noreferrer" target="_blank">
+          Forward Guidance and the Yield Curve
+        </a>
+<p class="paper-meta">with <a href="https://sites.google.com/view/jswolff/home" rel="noopener noreferrer" target="_blank">Jonathan Wolff</a></p><p class="paper-summary">This paper studies why the yield curve became less informative about recessions after the adoption of forward guidance. The mechanism is that forward guidance compresses term premia and flattens the yield curve, muting its recession-predictive content.</p>
+<button class="abs-btn" onclick="toggle(this)">Abstract ↓</button>
+<div class="paper-abstract"><p>An inverted yield curve has traditionally predicted recessions by signaling market expectations of falling short-term interest rates. We document a structural break in June 2009 that weakens this predictive relationship. Using a New Keynesian model with Epstein-Zin preferences and stochastic volatility, we show that forward guidance compresses the term premium and flattens the yield curve. By reducing the risk households associate with holding long-term bonds, forward guidance dampens the response of yields to shifting economic conditions. The model replicates the decline in predictive power observed in the data, suggesting that forward guidance has muted the yield curve's informational content.</p></div>
+</li>
+<li class="paper">
+<a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5787663" rel="noopener noreferrer" target="_blank">
+          The Curvature of Catastrophe: Collective Action under Tipping Risk
+        </a>
+<p class="paper-meta">Working paper</p><p class="paper-summary">This paper studies collective action when climate damages involve uncertain tipping thresholds. Nonlinear tipping risk can turn mitigation incentives from strategic substitutes into strategic complements, generating behavioral tipping points.</p>
+<button class="abs-btn" onclick="toggle(this)">Abstract ↓</button>
+<div class="paper-abstract"><p>I study how uncertainty about climate tipping thresholds shapes collective action. When the location of a tipping point is uncertain, perceived tipping risk responds nonlinearly to the carbon stock: the marginal benefit of mitigation rises as the stock approaches regions where tipping appears most likely, but falls once the stock moves beyond them. I show that this nonlinearity shifts mitigation incentives from strategic substitutes to strategic complements and generates multiple steady states separated by a behavioral tipping point. Physical tipping risk can incentivize effective collective action only while the carbon stock remains below this behavioral threshold. Greater scientific certainty about an imminent tipping point can weaken collective action by pushing the economy past this threshold and toward a high-carbon steady state.</p></div>
+</li>
+</ul>
+</section>
+<section id="work-in-progress">
+<h2>Work in Progress</h2>
+<ul class="wp-list">
+<li class="wp-item">
+        Knowledge Spillovers and the Social Returns to Innovation
+        <span class="wp-meta"> · with <a href="https://carnehl.github.io/" rel="noopener noreferrer" target="_blank">Christoph Carnehl</a></span>
+</li>
+<li class="wp-item">
+        Are Ideas Becoming Harder to Finance? Knowledge-Based Borrowing Constraints
+        <span class="wp-meta"> · with <a href="https://carnehl.github.io/" rel="noopener noreferrer" target="_blank">Christoph Carnehl</a></span>
+</li>
+<li class="wp-item">
+        Trade Agreements and Cross-Country Comovements
+        <span class="wp-meta"> · with <a href="https://sites.google.com/site/joshederington/" rel="noopener noreferrer" target="_blank">Josh Ederington</a>, <a href="https://www.pugetsound.edu/directory/yoonseon-han" rel="noopener noreferrer" target="_blank">Yoonseon Han</a>, and <a href="https://www.jennyminier.com/" rel="noopener noreferrer" target="_blank">Jenny Minier</a></span>
+</li>
+<li class="wp-item">
+        Forward Guidance, Financial Frictions, and the Costs of Policy Reversal
+        <span class="wp-meta"> · with <a href="https://sites.google.com/view/drnamtvu/" rel="noopener noreferrer" target="_blank">Nam Vu</a> and <a href="https://sites.google.com/view/jswolff/home" rel="noopener noreferrer" target="_blank">Jonathan Wolff</a></span>
+</li>
+<li class="wp-item">
+        The Pulse of the Euro: European Monetary Integration and Business Cycle Dynamics
+      </li>
+</ul>
+</section>
+<section id="teaching">
+<h2>Teaching</h2>
+<p>
+      At Miami University I teach introductory macroeconomics (ECO 202), intermediate macroeconomic
+      theory (ECO 317), and a graduate course on DSGE modeling (ECO 517). I have advised several MA
+      theses in environmental economics.
+    </p>
+<p>
+      Previously I taught Principles of Microeconomics (ECON 1011) and Mathematical Economics (ECON 493)
+      at Washington University in St. Louis, and served as a teaching assistant at both WashU and the
+      University of Mannheim.
+    </p>
+</section>
+<footer>
+<span>David Lindequist · Miami University</span>
+<span>lindeqd@miamioh.edu</span>
+</footer>
+</div>
+<script>
+  function toggle(btn) {
+    var abs = btn.nextElementSibling;
+    var open = abs.classList.toggle('open');
+    btn.textContent = open ? 'Abstract \u2191' : 'Abstract \u2193';
+  }
+</script>
+</body>
+</html>
